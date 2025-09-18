@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services Coming Soon | Chisholm Engineering Solutions LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --primary: #1d3557;
+      --secondary: #457b9d;
+      --accent: #e63946;
+      --light: #f1faee;
+      --dark: #1c1c1c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+      display: flex;
+      overflow-x: hidden;
+    }
+
+    .sidebar {
+      background: var(--primary);
+      color: white;
+      width: 240px;
+      min-height: 100vh;
+      padding: 1.5rem 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      transition: width 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar.collapsed { width: 70px; }
+    .logo {
+      width: 140px;
+      margin: 0 auto 2rem auto;
+      display: block;
+      transition: width 0.3s, margin 0.3s;
+    }
+    .sidebar.collapsed .logo { width: 40px; margin-bottom: 1rem; }
+    .nav-links { flex: 1; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      margin: 0.4rem 0;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s;
+    }
+    .nav-item:hover { background: var(--secondary); }
+    .nav-item i { width: 20px; height: 20px; }
+    .nav-label { transition: opacity 0.3s; }
+    .sidebar.collapsed .nav-label { opacity: 0; pointer-events: none; }
+    .toggle-btn {
+      background: var(--secondary);
+      border: none;
+      color: white;
+      padding: 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      align-self: flex-end;
+    }
+    .toggle-btn:hover { background: var(--accent); }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      z-index: 1100;
+    }
+
+    
+    .main-content {
+      margin-left: 240px;
+      width: calc(100% - 240px);
+      transition: margin-left 0.3s, width 0.3s;
+    }
+    .sidebar.collapsed ~ .main-content {
+      margin-left: 70px;
+      width: calc(100% - 70px);
+    }
+    header {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+      position: relative;
+    }
+    header h1 { font-size: 2rem; font-weight: 800; }
+
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      min-height: 70vh;
+    }
+    main h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    main p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    /* Notify button is commented out in HTML */
+    .notify-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .notify-btn:hover { background: var(--accent); color: var(--dark); }
+
+    footer {
+      background: var(--primary);
+      color: #dfe6e9;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        width: 220px;
+        top: 0;
+        bottom: 0;
+      }
+      .sidebar.active { transform: translateX(0); }
+      .main-content { margin-left: 0; width: 100%; }
+      .mobile-menu-btn { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">
+      <img src="images/logo.png" alt="Chisholm Crest Logo" class="logo">
+    </a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-item"><i data-lucide="info"></i><span class="nav-label">About</span></a>
+      <a href="services.html" class="nav-item"><i data-lucide="settings"></i><span class="nav-label">Services</span></a>
+      <a href="contact.html" class="nav-item"><i data-lucide="phone"></i><span class="nav-label">Contact</span></a>
+    </div>
+    <button class="toggle-btn" id="toggle-btn"><i data-lucide="chevrons-left"></i></button>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Chisholm Engineering Solutions LLC</h1>
+      <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
+    </header>
+
+    <main>
+      <h1>Services Coming Soon</h1>
+      <p>We’re working hard to launch our full range of consulting and engineering services.  
+         Stay tuned for updates and announcements.</p>
+      <!-- <button class="notify-btn">Notify Me</button> -->
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Chisholm Engineering Solutions LLC | All Rights Reserved</p>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+    mobileBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Chisholm Engineering Solutions</title>
+  <title>Contact | Chisholm Engineering Solutions LLC</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -15,7 +15,6 @@
       --dark: #1c1c1c;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--light);
@@ -24,8 +23,6 @@
       display: flex;
       overflow-x: hidden;
     }
-
-    /* SIDEBAR */
     .sidebar {
       background: var(--primary);
       color: white;
@@ -36,7 +33,7 @@
       top: 0; left: 0;
       display: flex;
       flex-direction: column;
-      transition: width 0.3s ease;
+      transition: width 0.3s ease, transform 0.3s ease;
       z-index: 1000;
     }
     .sidebar.collapsed { width: 70px; }
@@ -47,28 +44,49 @@
       transition: width 0.3s, margin 0.3s;
     }
     .sidebar.collapsed .logo { width: 40px; margin-bottom: 1rem; }
-
     .nav-links { flex: 1; }
     .nav-item {
-      display: flex; align-items: center; gap: 0.8rem;
-      padding: 0.6rem 0.8rem; border-radius: 8px; margin: 0.4rem 0;
-      cursor: pointer; transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      margin: 0.4rem 0;
+      transition: background 0.3s;
+      text-decoration: none;
+      color: white;
     }
     .nav-item:hover { background: var(--secondary); }
     .nav-item i { width: 20px; height: 20px; }
     .nav-label { transition: opacity 0.3s; }
     .sidebar.collapsed .nav-label { opacity: 0; pointer-events: none; }
-
-    /* TOGGLE */
     .toggle-btn {
-      background: var(--secondary); border: none; color: white;
-      padding: 0.6rem; border-radius: 8px; cursor: pointer;
-      margin-top: auto; display: flex; align-items: center; justify-content: center;
+      background: var(--secondary);
+      border: none;
+      color: white;
+      padding: 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background 0.3s;
+      align-self: flex-end;
     }
     .toggle-btn:hover { background: var(--accent); }
-
-    /* MAIN */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      z-index: 1100;
+    }
     .main-content {
       margin-left: 240px;
       width: calc(100% - 240px);
@@ -83,9 +101,9 @@
       color: white;
       text-align: center;
       padding: 1.2rem;
+      position: relative;
     }
     header h1 { font-size: 2rem; font-weight: 800; }
-
     .container {
       max-width: 800px;
       margin: 2rem auto;
@@ -101,33 +119,56 @@
       font-weight: 700;
     }
 
-    /* FORM */
+    /* --- Form Styling --- */
     form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
-    label { font-weight: 600; }
+    form div {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
     input, textarea {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid #ccc;
       border-radius: 8px;
       font-size: 1rem;
       font-family: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
-    textarea { resize: vertical; min-height: 120px; }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
     button {
       background: var(--primary);
       color: white;
       border: none;
-      padding: 0.9rem;
+      padding: 0.9rem 1.5rem;
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
       transition: background 0.3s;
+      align-self: flex-start;
     }
     button:hover { background: var(--accent); }
 
+    #status {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
     footer {
       background: var(--primary);
       color: #dfe6e9;
@@ -136,38 +177,34 @@
       font-size: 0.9rem;
       margin-top: 2rem;
     }
-
     @media (max-width: 768px) {
       .sidebar { transform: translateX(-100%); position: fixed; width: 220px; }
       .sidebar.active { transform: translateX(0); }
       .main-content { margin-left: 0; width: 100%; }
+      .mobile-menu-btn { display: block; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <a href="index.html">
       <img src="images/logo.png" alt="Chisholm Crest Logo" class="logo">
     </a>
     <div class="nav-links">
-      <div class="nav-item"><i data-lucide="info"></i><span class="nav-label"><a href="about.html" style="color:white;text-decoration:none;">About</a></span></div>
-      <div class="nav-item"><i data-lucide="settings"></i><span class="nav-label"><a href="services.html" style="color:white;text-decoration:none;">Services</a></span></div>
-      <div class="nav-item"><i data-lucide="phone"></i><span class="nav-label"><a href="contact.html" style="color:white;text-decoration:none;">Contact</a></span></div>
+      <a href="about.html" class="nav-item"><i data-lucide="info"></i><span class="nav-label">About</span></a>
+      <a href="services.html" class="nav-item"><i data-lucide="settings"></i><span class="nav-label">Services</span></a>
+      <a href="contact.html" class="nav-item"><i data-lucide="phone"></i><span class="nav-label">Contact</span></a>
     </div>
-    <button class="toggle-btn" id="toggle-btn"><i data-lucide="menu"></i></button>
+    <button class="toggle-btn" id="toggle-btn"><i data-lucide="chevrons-left"></i></button>
   </div>
-
-  <!-- Main -->
   <div class="main-content">
     <header>
       <h1>Contact Us</h1>
+      <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
     </header>
-
     <div class="container">
       <h2>We’d love to hear from you</h2>
-      <form action="#" method="post">
+      <form action="https://formspree.io/f/meolyoep" method="POST">
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -186,11 +223,44 @@
         </div>
         <button type="submit">Send Message</button>
       </form>
+      <p id="status"></p>
     </div>
-
     <footer>
-      <p>&copy; 2025 Chisholm Engineering Solutions | All Rights Reserved</p>
+      <p>&copy; 2025 Chisholm Engineering Solutions LLC | All Rights Reserved</p>
     </footer>
   </div>
-
-  <scrip
+  <script>
+    lucide.createIcons();
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("toggle-btn");
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+    });
+    mobileBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+    const form = document.querySelector("form");
+    const status = document.getElementById("status");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          status.innerHTML = "✅ Thank you! Your message has been sent.";
+          form.reset();
+        } else {
+          status.innerHTML = "⚠️ Oops! Something went wrong. Please try again.";
+        }
+      } catch (error) {
+        status.innerHTML = "⚠️ Network error. Please try again later.";
+      }
+    });
+  </script>
+</body>
+</html>

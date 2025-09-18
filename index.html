@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chisholm Engineering Solutions</title>
+  <title>Chisholm Engineering Solutions LLC</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -14,9 +14,7 @@
       --light: #f1faee;
       --dark: #1c1c1c;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--light);
@@ -25,8 +23,6 @@
       display: flex;
       overflow-x: hidden;
     }
-
- 
     .sidebar {
       background: var(--primary);
       color: white;
@@ -57,15 +53,14 @@
       padding: 0.6rem 0.8rem;
       border-radius: 8px;
       margin: 0.4rem 0;
-      cursor: pointer;
       transition: background 0.3s;
+      text-decoration: none;
+      color: white;
     }
     .nav-item:hover { background: var(--secondary); }
     .nav-item i { width: 20px; height: 20px; }
     .nav-label { transition: opacity 0.3s; }
     .sidebar.collapsed .nav-label { opacity: 0; pointer-events: none; }
-
-  
     .toggle-btn {
       background: var(--secondary);
       border: none;
@@ -78,9 +73,9 @@
       align-items: center;
       justify-content: center;
       transition: background 0.3s;
+      align-self: flex-end;
     }
     .toggle-btn:hover { background: var(--accent); }
-
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -93,8 +88,6 @@
       top: 1rem;
       z-index: 1100;
     }
-
-
     .main-content {
       margin-left: 240px;
       width: calc(100% - 240px);
@@ -112,7 +105,6 @@
       position: relative;
     }
     header h1 { font-size: 2rem; font-weight: 800; }
-
     .hero {
       position: relative;
       background: url('images/chisholmbanner.png') no-repeat center center/cover;
@@ -143,7 +135,6 @@
       font-size: 1.2rem;
       max-width: 700px;
     }
-
     .container {
       max-width: 1100px;
       margin: auto;
@@ -157,8 +148,6 @@
       text-align: center;
     }
     p { text-align: center; margin-bottom: 1rem; }
-
-
     .services ul {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -178,7 +167,6 @@
       transform: translateY(-8px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
-
     footer {
       background: var(--primary);
       color: #dfe6e9;
@@ -186,8 +174,6 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
-
- 
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
@@ -203,40 +189,28 @@
   </style>
 </head>
 <body>
-
-
   <div class="sidebar" id="sidebar">
     <a href="index.html">
       <img src="images/logo.png" alt="Chisholm Crest Logo" class="logo">
     </a>
     <div class="nav-links">
-      <div class="nav-item"><i data-lucide="info"></i><span class="nav-label"><a href="about.html" style="color:white;text-decoration:none;">About</a></span></div>
-      <div class="nav-item"><i data-lucide="settings"></i><span class="nav-label"><a href="services.html" style="color:white;text-decoration:none;">Services</a></span></div>
-      <div class="nav-item"><i data-lucide="phone"></i><span class="nav-label"><a href="contact.html" style="color:white;text-decoration:none;">Contact</a></span></div>
+      <a href="about.html" class="nav-item"><i data-lucide="info"></i><span class="nav-label">About</span></a>
+      <a href="services.html" class="nav-item"><i data-lucide="settings"></i><span class="nav-label">Services</span></a>
+      <a href="contact.html" class="nav-item"><i data-lucide="phone"></i><span class="nav-label">Contact</span></a>
     </div>
     <button class="toggle-btn" id="toggle-btn"><i data-lucide="chevrons-left"></i></button>
   </div>
-
- 
   <div class="main-content">
     <header>
-      <h1>Chisholm Engineering Solutions</h1>
+      <h1>Chisholm Engineering Solutions LLC</h1>
       <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
     </header>
-
     <section class="hero">
       <h2>From the Highlands to the Great Lakes — and into the future.</h2>
-      <p>Expert consulting in electric vehicle charging, grid integration, and sustainable energy solutions.</p>
+      <p>Consulting in electric vehicle charging, 15118 and OCPP.</p>
     </section>
-
     <div class="container">
-      <section id="about" class="about">
-        <h2>About Us</h2>
-        <p>At Chisholm Engineering Solutions, we provide cutting-edge expertise in electric vehicle infrastructure, 
-        electrical systems design, and innovative consulting. Our mission is to create sustainable, reliable, interoperable
-        and future-ready solutions.</p>
-      </section>
-
+      <section id="about" class="about"></section>
       <section id="services" class="services">
         <h2>Our Services</h2>
         <ul>
@@ -246,35 +220,28 @@
           <li>OCPP 1.6J Log Review</li>
         </ul>
       </section>
-
       <section id="contact" class="contact">
         <h2>Contact Us</h2>
         <p>Email: <a href="mailto:info@ChisholmES.com">info@ChisholmES.com</a></p>
         <p>Phone: (248) 250-0271</p>
       </section>
     </div>
-
     <footer>
-      <p>&copy; 2025 Chisholm Engineering Solutions | All Rights Reserved</p>
+      <p>&copy; 2025 Chisholm Engineering Solutions LLC | All Rights Reserved</p>
     </footer>
   </div>
-
   <script>
     lucide.createIcons();
-
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggle-btn');
     const mobileBtn = document.getElementById('mobile-menu-btn');
-
-
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
     });
-
-  
     mobileBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
     });
   </script>
 </body>
 </html>
+
